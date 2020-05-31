@@ -1,9 +1,15 @@
+import 'react-native-gesture-handler';
+import { enableScreens } from 'react-native-screens';
 import React from 'react';
 import {
   StyleSheet,
   View,
   Text,
 } from 'react-native';
+
+import RootNavigation from 'screens/RootNavigation';
+
+enableScreens();
 
 const styles = StyleSheet.create({
   engine: {
@@ -32,6 +38,7 @@ const App = () => {
           Gifter
         </Text>
       </View>
+      <RootNavigation />
     </>
   );
 };
