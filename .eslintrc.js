@@ -26,6 +26,7 @@ module.exports = {
     'arrow-body-style': ['error', 'always'],
     'react/jsx-filename-extension': ['error', { 'extensions': ['.js', '.jsx'] }],
     'import/no-unresolved': 'off',
-    'import/no-extraneous-dependencies': ['error', {'packageDir': './'}]
+    'import/no-extraneous-dependencies': ['error', {'packageDir': './'}],
+    'import/prefer-default-export': 'off',
   },
 };

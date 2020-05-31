@@ -1,11 +1,18 @@
 import React, { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { Linking } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import { PERSISTENCE_KEY } from 'constants';
+
+import { HomeScreen, SettingsScreen } from './DummyScreens';
+import { saveNavigationState } from './utils';
 
 const navigationRef = React.createRef();
 // Parent's useEffect is always called after child's useEffect
 const isMountedRef = React.createRef();
+const Tab = createBottomTabNavigator();
 
 export function navigate(name, params) {
   if (isMountedRef.current && navigationRef.current) {
@@ -17,25 +24,10 @@ export function navigate(name, params) {
   }
 }
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
 const RootNavigation = () => {
+  const [isReady, setIsReady] = React.useState(false);
+  const [initialState, setInitialState] = React.useState();
+
   useEffect(() => {
     isMountedRef.current = true;
 
@@ -44,8 +36,40 @@ const RootNavigation = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const restoreState = async () => {
+      try {
+        const initialUrl = await Linking.getInitialURL();
+
+        if (initialUrl === null) {
+          // Only restore state if there's no deep link
+          const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
+          const state = savedStateString ? JSON.parse(savedStateString) : undefined;
+
+          if (state !== undefined) {
+            setInitialState(state);
+          }
+        }
+      } finally {
+        setIsReady(true);
+      }
+    };
+
+    if (!isReady) {
+      restoreState();
+    }
+  }, []);
+
+  if (!isReady) {
+    return null;
+  }
+
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer
+      ref={navigationRef}
+      initialState={initialState}
+      onStateChange={saveNavigationState}
+    >
       <Tab.Navigator>
         <Tab.Screen
           name="Home"
