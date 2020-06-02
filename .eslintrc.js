@@ -28,5 +28,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': ['error', {'packageDir': './'}],
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    'react/prop-types': 'off',
   },
 };

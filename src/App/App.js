@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 
 import RootNavigation from 'screens/RootNavigation';
+import { LocalizationProvider } from 'shared/contexts/localization';
+import getLocale from 'shared/utils/getLocale';
 
 enableScreens();
 
@@ -35,10 +37,14 @@ const App = () => {
         style={styles.title}
       >
         <Text>
-          Gifter
+          Gifter!
+          {' '}
+          {getLocale()}
         </Text>
       </View>
-      <RootNavigation />
+      <LocalizationProvider>
+        <RootNavigation />
+      </LocalizationProvider>
     </>
   );
 };
