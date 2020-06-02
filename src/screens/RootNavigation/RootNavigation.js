@@ -9,6 +9,7 @@ import { PERSISTENCE_KEY } from 'constants';
 
 import { HomeScreen, SettingsScreen } from './DummyScreens';
 import { saveNavigationState } from './utils';
+import useRestoreNavigationState from './useRestoreNavigationState';
 
 const navigationRef = React.createRef();
 // Parent's useEffect is always called after child's useEffect
@@ -27,8 +28,7 @@ export function navigate(name, params) {
 
 const RootNavigation = () => {
   const scheme = useColorScheme();
-  const [isReady, setIsReady] = React.useState(false);
-  const [initialState, setInitialState] = React.useState();
+  const { initialState, isReady } = useRestoreNavigationState();
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -36,30 +36,6 @@ const RootNavigation = () => {
     return () => {
       isMountedRef.current = false;
     };
-  }, []);
-
-  useEffect(() => {
-    const restoreState = async () => {
-      try {
-        const initialUrl = await Linking.getInitialURL();
-
-        if (initialUrl === null) {
-          // Only restore state if there's no deep link
-          const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
-          const state = savedStateString ? JSON.parse(savedStateString) : undefined;
-
-          if (state !== undefined) {
-            setInitialState(state);
-          }
-        }
-      } finally {
-        setIsReady(true);
-      }
-    };
-
-    if (!isReady) {
-      restoreState();
-    }
   }, []);
 
   if (!isReady) {
