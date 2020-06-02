@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Linking } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useColorScheme } from 'react-native-appearance';
 
 import { PERSISTENCE_KEY } from 'constants';
 
@@ -25,6 +26,7 @@ export function navigate(name, params) {
 }
 
 const RootNavigation = () => {
+  const scheme = useColorScheme();
   const [isReady, setIsReady] = React.useState(false);
   const [initialState, setInitialState] = React.useState();
 
@@ -69,6 +71,7 @@ const RootNavigation = () => {
       ref={navigationRef}
       initialState={initialState}
       onStateChange={saveNavigationState}
+      theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       <Tab.Navigator>
         <Tab.Screen

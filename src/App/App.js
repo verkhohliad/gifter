@@ -1,6 +1,7 @@
 import 'react-native-gesture-handler';
 import { enableScreens } from 'react-native-screens';
 import React from 'react';
+import { AppearanceProvider } from 'react-native-appearance';
 import {
   StyleSheet,
   View,
@@ -43,7 +44,9 @@ const App = () => {
         </Text>
       </View>
       <LocalizationProvider>
-        <RootNavigation />
+        <AppearanceProvider>
+          <RootNavigation />
+        </AppearanceProvider>
       </LocalizationProvider>
     </>
   );
