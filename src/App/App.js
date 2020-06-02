@@ -29,11 +29,6 @@ const styles = StyleSheet.create({
 const App = () => {
   return (
     <>
-      {global.HermesInternal == null ? null : (
-        <View style={styles.engine}>
-          <Text style={styles.footer}>Engine: Hermes</Text>
-        </View>
-      )}
       <View
         style={styles.title}
       >
