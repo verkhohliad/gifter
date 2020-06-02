@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react';
-import { Linking } from 'react-native';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AsyncStorage from '@react-native-community/async-storage';
 import { useColorScheme } from 'react-native-appearance';
-
-import { PERSISTENCE_KEY } from 'constants';
 
 import { HomeScreen, SettingsScreen } from './DummyScreens';
 import { saveNavigationState } from './utils';
