@@ -1,11 +1,15 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   extends: [
-    'airbnb'
+    'airbnb',
   ],
-  rules: {
-    'arrow-body-style': ['error', 'always'],
-    'react/jsx-filename-extension': ['error', { 'extensions': ['.js', '.jsx'] }]
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true,
+    jest: true,
+    node: true,
   },
   'overrides': [
     {
@@ -17,5 +21,14 @@ module.exports = {
         'jest': true
       }
     }
-  ]
+  ],
+  rules: {
+    'arrow-body-style': ['error', 'always'],
+    'react/jsx-filename-extension': ['error', { 'extensions': ['.js', '.jsx'] }],
+    'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': ['error', {'packageDir': './'}],
+    'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    'react/prop-types': 'off',
+  },
 };

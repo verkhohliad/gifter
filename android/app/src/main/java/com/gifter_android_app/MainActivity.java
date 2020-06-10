@@ -1,4 +1,4 @@
-package com.gifter;
+package com.gifter_android_app;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "gifter";
+    return "gifter_android_app";
   }
 }
