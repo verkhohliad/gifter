@@ -1,14 +1,13 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-import styles from './styles';
+import { accountStyles } from './styles';
 
 const AccountScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={accountStyles.container}>
       <Text>Account screen</Text>
-    </SafeAreaView>
+    </View>
   );
 };
 

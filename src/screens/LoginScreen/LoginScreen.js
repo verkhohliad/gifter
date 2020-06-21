@@ -1,36 +1,32 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
-import { LoginManager } from 'react-native-fbsdk';
+import React, { useState } from 'react';
+import { View, Button, ActivityIndicator } from 'react-native';
+
+import { FBLogin, FBLoadToken } from 'services/facebook/auth';
 
 import styles from './styles';
 
-const LoginScreen = () => {
-  const login = () => {
-    LoginManager.logInWithPermissions(['public_profile']).then(
-      (result) => {
-        if (result.isCancelled) {
-          console.log('Login cancelled');
-        } else {
-          console.log(result);
-          console.log(
-            `Login success with permissions: ${
-              result.grantedPermissions.toString()}`,
-          );
-        }
-      },
-      (error) => {
-        console.log(`Login fail with error: ${error}`);
-      },
-    );
+const LoginScreen = ({ setUserAccessData }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const login = async () => {
+    setIsLoading(true);
+    const result = await FBLogin();
+
+    if (result) {
+      const accessData = await FBLoadToken();
+
+      setIsLoading(false);
+      setUserAccessData(accessData);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
       <Button
-        title="Login via Facebook"
+        title="Login with Facebook"
         onPress={login}
       />
+      {isLoading && <ActivityIndicator size="large" />}
     </View>
   );
 };

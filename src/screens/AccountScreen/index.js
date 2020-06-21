@@ -1,1 +1,1 @@
-export { default } from './AccountScreen';
+export { default } from './AccountScreenContainer';

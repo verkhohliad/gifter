@@ -4,9 +4,10 @@ import React from 'react';
 import { AppearanceProvider } from 'react-native-appearance';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import RootNavigation from 'screens/RootNavigation';
 import { LocalizationProvider } from 'shared/contexts/localization';
-import { UserDataProvider } from '../shared/contexts/userData';
+import { UserDataProvider } from 'shared/contexts/userData';
+
+import LoadLayer from './LoadLayer';
 
 enableScreens();
 
@@ -16,7 +17,7 @@ const App = () => {
       <AppearanceProvider>
         <LocalizationProvider>
           <UserDataProvider>
-            <RootNavigation />
+            <LoadLayer />
           </UserDataProvider>
         </LocalizationProvider>
       </AppearanceProvider>

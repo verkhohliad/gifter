@@ -2,15 +2,13 @@ import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useColorScheme } from 'react-native-appearance';
-import { AccessToken } from 'react-native-fbsdk';
 
 import { useUserData } from 'shared/contexts/userData';
+import { saveNavigationState } from 'shared/utils/navigationState';
 
 import LoginScreen from '../LoginScreen';
 import CalendarScreen from '../CalendarScreen';
 import AccountScreen from '../AccountScreen';
-import { saveNavigationState } from './utils';
-import useRestoreNavigationState from './useRestoreNavigationState';
 
 const navigationRef = React.createRef();
 // Parent's useEffect is always called after child's useEffect
@@ -27,9 +25,8 @@ export function navigate(name, params) {
   }
 }
 
-const RootNavigation = () => {
+const RootNavigation = ({ navigationState }) => {
   const scheme = useColorScheme();
-  const { initialState, isReady } = useRestoreNavigationState();
   const {
     userAccessData,
     setUserAccessData,
@@ -38,38 +35,19 @@ const RootNavigation = () => {
   useEffect(() => {
     isMountedRef.current = true;
 
-    AccessToken.getCurrentAccessToken()
-      .then((data) => {
-        if (data) {
-          setUserAccessData(data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
     return () => {
       isMountedRef.current = false;
     };
   }, []);
 
-  if (!isReady) {
-    return null;
-  }
-
-  // const logout = () => {
-  //   LoginManager.logOut();
-  //   // setIsLogged(false);
-  // };
-
   return (
     <NavigationContainer
       ref={navigationRef}
-      initialState={initialState}
+      initialState={navigationState}
       onStateChange={saveNavigationState}
       theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
     >
-      {!userAccessData && <LoginScreen />}
+      {!userAccessData && <LoginScreen setUserAccessData={setUserAccessData} />}
       {userAccessData && (
         <>
           <Tab.Navigator>
