@@ -2,8 +2,13 @@ import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useColorScheme } from 'react-native-appearance';
+import { AccessToken } from 'react-native-fbsdk';
 
-import { HomeScreen, SettingsScreen } from './DummyScreens';
+import { useUserData } from 'shared/contexts/userData';
+
+import LoginScreen from '../LoginScreen';
+import CalendarScreen from '../CalendarScreen';
+import AccountScreen from '../AccountScreen';
 import { saveNavigationState } from './utils';
 import useRestoreNavigationState from './useRestoreNavigationState';
 
@@ -25,9 +30,23 @@ export function navigate(name, params) {
 const RootNavigation = () => {
   const scheme = useColorScheme();
   const { initialState, isReady } = useRestoreNavigationState();
+  const {
+    userAccessData,
+    setUserAccessData,
+  } = useUserData();
 
   useEffect(() => {
     isMountedRef.current = true;
+
+    AccessToken.getCurrentAccessToken()
+      .then((data) => {
+        if (data) {
+          setUserAccessData(data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     return () => {
       isMountedRef.current = false;
@@ -38,6 +57,11 @@ const RootNavigation = () => {
     return null;
   }
 
+  // const logout = () => {
+  //   LoginManager.logOut();
+  //   // setIsLogged(false);
+  // };
+
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -45,13 +69,23 @@ const RootNavigation = () => {
       onStateChange={saveNavigationState}
       theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
     >
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-        />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      {!userAccessData && <LoginScreen />}
+      {userAccessData && (
+        <>
+          <Tab.Navigator>
+            <Tab.Screen
+              name="Calendar"
+              component={CalendarScreen}
+              options={{ title: 'Calendar' }}
+            />
+            <Tab.Screen
+              name="Account"
+              component={AccountScreen}
+              options={{ title: 'Account' }}
+            />
+          </Tab.Navigator>
+        </>
+      )}
     </NavigationContainer>
   );
 };

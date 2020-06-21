@@ -64,6 +64,7 @@ target 'gifter' do
   pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text'
   pod 'React-RCTVibration', :path => '../node_modules/react-native/Libraries/Vibration'
   pod 'React-Core/RCTWebSocket', :path => '../node_modules/react-native/'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
