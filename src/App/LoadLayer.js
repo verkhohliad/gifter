@@ -3,7 +3,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { restoreNavigationState } from 'shared/utils/navigationState';
 import RootNavigation from 'screens/RootNavigation';
-import { FBLoadToken } from 'services/facebook/auth';
+import { Auth } from 'services/facebook';
 import { useUserData } from 'shared/contexts/userData';
 
 const LoadLayer = () => {
@@ -17,10 +17,15 @@ const LoadLayer = () => {
     const load = async () => {
       await EvilIcons.loadFont();
       const initialNavigationState = await restoreNavigationState();
-      const userAccessToken = await FBLoadToken();
+      const userAccessToken = await Auth.loadToken();
 
-      setNavigationState(initialNavigationState);
-      setUserAccessData(userAccessToken);
+      if (initialNavigationState) {
+        setNavigationState(initialNavigationState);
+      }
+
+      if (userAccessToken) {
+        setUserAccessData(userAccessToken);
+      }
 
       // todo: splash screen turn off instead of isLoaded flag
       setIsLoaded(true);

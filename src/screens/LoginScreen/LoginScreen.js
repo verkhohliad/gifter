@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Button, ActivityIndicator } from 'react-native';
 
-import { FBLogin, FBLoadToken } from 'services/facebook/auth';
+import { Auth } from 'services/facebook';
 
 import styles from './styles';
 
@@ -10,10 +10,10 @@ const LoginScreen = ({ setUserAccessData }) => {
 
   const login = async () => {
     setIsLoading(true);
-    const result = await FBLogin();
+    const result = await Auth.login();
 
     if (result) {
-      const accessData = await FBLoadToken();
+      const accessData = await Auth.loadToken();
 
       setIsLoading(false);
       setUserAccessData(accessData);

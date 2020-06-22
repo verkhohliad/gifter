@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View, Button } from 'react-native';
 
-import { FBLogout } from 'services/facebook/auth';
+import { Auth } from 'services/facebook';
 import { useUserData } from 'shared/contexts/userData';
 
 import { settingsStyles } from './styles';
@@ -12,7 +12,7 @@ const SettingsScreen = () => {
   } = useUserData();
 
   const logout = useCallback(() => {
-    FBLogout();
+    Auth.logout();
     setUserAccessData(null);
   }, []);
 
