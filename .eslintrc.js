@@ -30,5 +30,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/extensions': 'off',
     'react/prop-types': 'off',
+    'max-len': ['error', { 'code': 150 }],
   },
 };

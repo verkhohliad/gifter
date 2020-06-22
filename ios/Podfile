@@ -1,3 +1,12 @@
+# Override Firebase SDK Version
+$FirebaseSDKVersion = '6.13.0'
+
+# Override Fabric SDK Version
+$FabricSDKVersion = '1.6.0'
+
+# Override Crashlytics SDK Version
+$CrashlyticsSDKVersion = '3.1.0'
+
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -69,6 +78,7 @@ target 'gifter' do
   pod 'Firebase/Analytics'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase/Auth'
 
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
@@ -82,9 +92,6 @@ target 'gifter' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-
-
-  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
 
   target 'gifterTests' do
     inherit! :complete

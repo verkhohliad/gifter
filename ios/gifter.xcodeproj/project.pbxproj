@@ -155,6 +155,13 @@
 			name = gifter;
 			sourceTree = "<group>";
 		};
+		1D6DDCA91C4840DCB3D4D5AA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,14 +248,6 @@
 			name = Fonts;
 			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
-		};
-		1D6DDCA91C4840DCB3D4D5AA /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -397,22 +396,6 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				E39D540824913EF900071D5A /* GoogleService-Info.plist in Resources */,
-				598D57EEB7CC4053A41B20F1 /* AntDesign.ttf in Resources */,
-				945EF0EECC2D4A939D2E6CE5 /* Entypo.ttf in Resources */,
-				B1B3339735B442DB807416ED /* EvilIcons.ttf in Resources */,
-				B3BB32C1BCA44146A0B9A449 /* Feather.ttf in Resources */,
-				A0902D76AF154E4E9618628F /* FontAwesome.ttf in Resources */,
-				CAD1A6142C3646CE8E8B0DF1 /* FontAwesome5_Brands.ttf in Resources */,
-				B5D0C13B847C480EA00CE952 /* FontAwesome5_Regular.ttf in Resources */,
-				40E1D36BDF9C49EA9DE58364 /* FontAwesome5_Solid.ttf in Resources */,
-				DC29668A963540DE88F52764 /* Fontisto.ttf in Resources */,
-				C162CDD61D644418BBD398B1 /* Foundation.ttf in Resources */,
-				98434FEEF354413C889FAA84 /* Ionicons.ttf in Resources */,
-				D4A6107C6984451B81DFB8B6 /* MaterialCommunityIcons.ttf in Resources */,
-				CD8A50F3A66446EBA77E6F0A /* MaterialIcons.ttf in Resources */,
-				8414C7F70E954EEBB9EFE34A /* Octicons.ttf in Resources */,
-				82BD9C251DDB44B1A2018C75 /* SimpleLineIcons.ttf in Resources */,
-				8109C6FD5A0C4F34AF9C856F /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { restoreNavigationState } from 'shared/utils/navigationState';
 import RootNavigation from 'screens/RootNavigation';
-import { Auth } from 'services/facebook';
+import { Auth, User } from 'services/facebook';
 import { useUserData } from 'shared/contexts/userData';
 
 const LoadLayer = () => {
@@ -24,6 +24,8 @@ const LoadLayer = () => {
       }
 
       if (userAccessToken) {
+        // todo: clean up and to do best
+        User.fetchCurrentProfile().then(console.log);
         setUserAccessData(userAccessToken);
       }
 
