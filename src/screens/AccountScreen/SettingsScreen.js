@@ -1,19 +1,21 @@
 import React, { useCallback } from 'react';
 import { View, Button } from 'react-native';
 
-import { Auth } from 'services/facebook';
+import { Auth } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 
 import { settingsStyles } from './styles';
 
 const SettingsScreen = () => {
   const {
-    setUserAccessData,
+    setFbAccessToken,
+    setUserData,
   } = useUserData();
 
-  const logout = useCallback(() => {
-    Auth.logout();
-    setUserAccessData(null);
+  const logout = useCallback(async () => {
+    await Auth.logout();
+    setFbAccessToken(null);
+    setUserData(null);
   }, []);
 
   return (

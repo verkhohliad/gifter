@@ -3,34 +3,40 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { restoreNavigationState } from 'shared/utils/navigationState';
 import RootNavigation from 'screens/RootNavigation';
-import { Auth, User } from 'services/facebook';
+import { Auth as FBAuth } from 'services/facebook';
+import { Auth } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 
 const LoadLayer = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [navigationState, setNavigationState] = useState(null);
   const {
-    setUserAccessData,
+    setFbAccessToken,
+    setUserData,
   } = useUserData();
 
   useEffect(() => {
     const load = async () => {
       await EvilIcons.loadFont();
       const initialNavigationState = await restoreNavigationState();
-      const userAccessToken = await Auth.loadToken();
+      const userAccessToken = await FBAuth.loadToken();
 
       if (initialNavigationState) {
         setNavigationState(initialNavigationState);
       }
 
       if (userAccessToken) {
-        // todo: clean up and to do best
-        User.fetchCurrentProfile().then(console.log);
-        setUserAccessData(userAccessToken);
+        setFbAccessToken(userAccessToken.accessToken);
       }
 
-      // todo: splash screen turn off instead of isLoaded flag
-      setIsLoaded(true);
+      Auth.onAuthStateChanged((userData) => {
+        if (userData) {
+          setUserData(userData);
+        }
+
+        // todo: splash screen turn off instead of isLoaded flag
+        setIsLoaded(true);
+      });
     };
 
     try {

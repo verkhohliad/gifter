@@ -3,17 +3,17 @@ import React, { useState, useMemo } from 'react';
 import { Provider } from './UserDataContext';
 
 const UserDataProvider = ({ children }) => {
-  const [userAccessData, setUserAccessData] = useState(null);
+  const [fbAccessToken, setFbAccessToken] = useState(null);
   const [userData, setUserData] = useState(null);
 
   const value = useMemo(() => {
     return {
-      userAccessData,
-      setUserAccessData,
+      fbAccessToken,
+      setFbAccessToken,
       userData,
       setUserData,
     };
-  }, [userAccessData, userData]);
+  }, [fbAccessToken, userData]);
 
   return (
     <Provider value={value}>

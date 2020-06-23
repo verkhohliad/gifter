@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { View, Button, ActivityIndicator } from 'react-native';
 
-import { Auth } from 'services/facebook';
+import { Auth } from 'services/firebase';
 
 import styles from './styles';
 
-const LoginScreen = ({ setUserAccessData }) => {
+const LoginScreen = ({ setUserData, setFbAccessToken }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const login = async () => {
     setIsLoading(true);
     const result = await Auth.login();
+    setIsLoading(false);
 
     if (result) {
-      const accessData = await Auth.loadToken();
+      const { fbAccessToken, userData } = result;
 
-      setIsLoading(false);
-      setUserAccessData(accessData);
+      setUserData(userData);
+      setFbAccessToken(fbAccessToken);
     }
   };
 
