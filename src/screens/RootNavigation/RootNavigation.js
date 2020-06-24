@@ -3,9 +3,12 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useColorScheme } from 'react-native-appearance';
 
-import { HomeScreen, SettingsScreen } from './DummyScreens';
-import { saveNavigationState } from './utils';
-import useRestoreNavigationState from './useRestoreNavigationState';
+import { useUserData } from 'shared/contexts/userData';
+import { saveNavigationState } from 'shared/utils/navigationState';
+
+import LoginScreen from '../LoginScreen';
+import CalendarScreen from '../CalendarScreen';
+import AccountScreen from '../AccountScreen';
 
 const navigationRef = React.createRef();
 // Parent's useEffect is always called after child's useEffect
@@ -22,9 +25,15 @@ export function navigate(name, params) {
   }
 }
 
-const RootNavigation = () => {
+const RootNavigation = ({ navigationState }) => {
   const scheme = useColorScheme();
-  const { initialState, isReady } = useRestoreNavigationState();
+  const {
+    fbAccessToken,
+    userData,
+    setFbAccessToken,
+    setUserData,
+  } = useUserData();
+  const isLoggedIn = fbAccessToken && userData;
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -34,24 +43,35 @@ const RootNavigation = () => {
     };
   }, []);
 
-  if (!isReady) {
-    return null;
-  }
-
   return (
     <NavigationContainer
       ref={navigationRef}
-      initialState={initialState}
+      initialState={navigationState}
       onStateChange={saveNavigationState}
       theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
     >
-      <Tab.Navigator>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+      {!isLoggedIn && (
+        <LoginScreen
+          setFbAccessToken={setFbAccessToken}
+          setUserData={setUserData}
         />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      )}
+      {isLoggedIn && (
+        <>
+          <Tab.Navigator>
+            <Tab.Screen
+              name="Calendar"
+              component={CalendarScreen}
+              options={{ title: 'Calendar' }}
+            />
+            <Tab.Screen
+              name="Account"
+              component={AccountScreen}
+              options={{ title: 'Account' }}
+            />
+          </Tab.Navigator>
+        </>
+      )}
     </NavigationContainer>
   );
 };
