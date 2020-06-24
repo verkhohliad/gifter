@@ -5,7 +5,7 @@ import { AccessToken, LoginManager } from 'react-native-fbsdk';
 class Auth {
   async login() {
     try {
-      const response = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+      const response = await LoginManager.logInWithPermissions(['public_profile', 'email', 'user_birthday', 'user_friends']);
 
       if (response.isCancelled) {
         console.log('Login cancelled');

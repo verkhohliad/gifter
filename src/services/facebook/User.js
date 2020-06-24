@@ -5,11 +5,18 @@ class User {
     this.requestManager = new GraphRequestManager();
   }
 
-  async fetchCurrentProfile() {
+  async fetchCurrentProfile(accessToken) {
     return new Promise((resolve, reject) => {
       const request = new GraphRequest(
         '/me',
-        null,
+        {
+          accessToken,
+          parameters: {
+            fields: {
+              string: '',
+            },
+          },
+        },
         (error, result) => {
           if (result) {
             const profile = result;
