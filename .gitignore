@@ -22,6 +22,7 @@ DerivedData
 *.xcuserstate
 
 # Android/IntelliJ
+android/app/google-services.json
 #
 build/
 .idea
@@ -57,3 +58,4 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+/ios/GoogleService-Info.plist
