@@ -1,5 +1,4 @@
 # Override Firebase SDK Version
-$FirebaseSDKVersion = '6.13.0'
 
 # Override Fabric SDK Version
 $FabricSDKVersion = '1.6.0'
@@ -78,8 +77,11 @@ target 'gifter' do
   pod 'GoogleAnalytics'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/CoreOnly'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Functions'
 
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'

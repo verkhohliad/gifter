@@ -4,6 +4,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  searchUserForm: {
+    flex: 1,
+    flexDirection: 'column',
+  },
 });
 
 export default styles;
