@@ -1,1 +1,1 @@
-export { default } from './CalendarScreen';
+export { default } from './CalendarScreenContainer';

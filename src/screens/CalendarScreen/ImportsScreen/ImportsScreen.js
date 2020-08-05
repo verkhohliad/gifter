@@ -6,7 +6,7 @@ import styles from './styles';
 const CalendarScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>Calendar Screen</Text>
+      <Text>ImportsScreen</Text>
     </View>
   );
 };
