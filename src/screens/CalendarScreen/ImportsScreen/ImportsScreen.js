@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import {
-  View, Text, TextInput, Button,
+  View, Text, TextInput, Button, ActivityIndicator, FlatList, Image, TouchableOpacity,
 } from 'react-native';
-import frFunctions from '@react-native-firebase/functions';
-import firestore from '@react-native-firebase/firestore';
+// import frFunctions from '@react-native-firebase/functions';
+// import firestore from '@react-native-firebase/firestore';
 import firebase from '@react-native-firebase/app';
 
 import styles from './styles';
@@ -11,55 +11,119 @@ import styles from './styles';
 // todo: draft file
 
 const functions = firebase.app().functions('europe-west3');
-// const firestore = firebase.app().firestore();
+// for local emulator
+// functions.useFunctionsEmulator('http://localhost:5001');
 
-const magic = async () => {
-  const snapshotTEMP = await firestore().collection('vk-api-users').get();
-  snapshotTEMP.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
-  });
+// for local emulator
+// const db = firebase.firestore();
+// db.settings({
+//   host: 'localhost:8080',
+//   ssl: false,
+// });
 
-  const vkApiUsersRef = firestore().collection('vk-api-users');
+const magic = () => {
+  // firestore().collection('users').doc('newDoc').collection('events')
+  //   .add({
+  //     event: 'Birthday',
+  //   });
 
-  console.log({ vkApiUsersRef });
-
-  const snapshot = await vkApiUsersRef
-    .where('isAvailable', '==', 'true')
-    // todo: check this ordering
-    .orderBy('amountUsage')
-    .limit(1);
-    // .get();
-
-  console.log({ vkApiUsersRef, snapshot });
-
-  // also maybe need to falsify when smth went wrong with vk user api
-  // vkApiUsersRef.doc(vkUserDoc.id).update({
-  //   amountUsage: firebaseAdmin.firestore.FieldValue.increment(1),
+  // db.collection('users').add({
+  //   name: 'Ihor',
   // });
 
-  // user with lowest usage
-  return snapshot.docs[0];
+  // db.collection('users').doc('5wL5doY6TVc75JUemT26').update({
+  //   bdate: '06.11',
+  // });
 };
 
-const CalendarScreen = () => {
-  const [vkUserId, setVkUserId] = useState('');
+const renderListItem = ({ item }) => {
+  const {
+    firstName, lastName, photo, onPress,
+  } = item;
 
-  const search = useCallback(() => {
-    functions.httpsCallable('vk-search_user')({ query: vkUserId }).then((response) => {
-      console.log({ response: response.data });
-    }).catch((error) => {
-      // Getting the Error details.
-      console.log({ error });
-      const { code } = error;
-      const { message } = error;
-      const { details } = error;
-      // ...
-    });
+  console.log({ item });
+
+  return (
+    <TouchableOpacity
+      style={styles.item}
+      onPress={onPress}
+    >
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={{
+          uri: photo,
+        }}
+      />
+      <Text style={{ fontSize: 16, width: 100, height: 40 }}>
+        {firstName}
+        {' '}
+        {lastName}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+const ImportsScreen = () => {
+  const [vkUserId, setVkUserId] = useState('');
+  const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getEvents = useCallback(async () => {
+    const { data } = await functions.httpsCallable('events-getAll')();
+
+    console.log('Get events', data);
+  }, []);
+
+  const selectUser = useCallback(async (userId) => {
+    const { data } = await functions.httpsCallable('vk-pickUser')({ userId });
+
+    console.log('Select done', data);
+  }, []);
+
+  const search = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await functions.httpsCallable('vk-searchUser')({ query: vkUserId });
+
+      console.log({ data });
+
+      const { items } = data.response;
+
+      const mappedItems = items.map((item) => {
+        const {
+          id, first_name: firstName, last_name: lastName, photo_100: photo,
+        } = item;
+
+        return {
+          id,
+          firstName,
+          lastName,
+          photo,
+          onPress: selectUser.bind(null, id),
+        };
+      });
+
+      console.log('Search done', items);
+
+      setUsers(mappedItems);
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err);
+    }
   }, [vkUserId]);
 
   return (
     <View style={styles.container}>
       <Text>ImportsScreen</Text>
+      <Button
+        title="Get events"
+        onPress={getEvents}
+      />
+
+      <Button
+        title="Magic"
+        onPress={magic}
+      />
 
       <View style={styles.searchUserForm}>
         <TextInput
@@ -71,13 +135,19 @@ const CalendarScreen = () => {
           title="Search"
           onPress={search}
         />
-        <Button
-          title="Do magic"
-          onPress={magic}
-        />
+      </View>
+
+      <View style={styles.usersList}>
+        {isLoading && <ActivityIndicator size="large" />}
+        {!isLoading && users.length > 0 && (
+          <FlatList
+            data={users}
+            renderItem={renderListItem}
+          />
+        )}
       </View>
     </View>
   );
 };
 
-export default CalendarScreen;
+export default ImportsScreen;

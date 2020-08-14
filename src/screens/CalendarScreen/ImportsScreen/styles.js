@@ -5,8 +5,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   searchUserForm: {
+    // flex: 1,
+    // flexDirection: 'column',
+  },
+  usersList: {
     flex: 1,
-    flexDirection: 'column',
+  },
+  item: {
+    flexDirection: 'row',
+    marginBottom: 10,
   },
 });
 
