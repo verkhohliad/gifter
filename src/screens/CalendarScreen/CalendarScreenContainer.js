@@ -7,6 +7,7 @@ import Icon from 'shared/components/Icon';
 import { CalendarUserDataProvider } from './CalendarUserData';
 import CalendarScreen from './CalendarScreen';
 import ImportsScreen from './ImportsScreen';
+import EventScreen from './EventScreen';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ const CalendarScreenContainer = () => {
           }}
         />
         <Stack.Screen name="Imports" component={ImportsScreen} />
+        <Stack.Screen name="Event" component={EventScreen} />
       </Stack.Navigator>
     </CalendarUserDataProvider>
   );

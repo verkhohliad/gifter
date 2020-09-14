@@ -16,7 +16,7 @@ const MAX_DATE = `${CURRENT_FULL_YEAR}-12-31`;
 
 const onRowHasChanged = (r1, r2) => { return r1 !== r2; };
 
-const CalendarScreen = () => {
+const CalendarScreen = ({ navigation }) => {
   const { events: initialEvents } = useCalendarUserData();
   const [events, setEvents] = useState({});
 
@@ -30,7 +30,14 @@ const CalendarScreen = () => {
         items={events}
         minDate={MIN_DATE}
         maxDate={MAX_DATE}
-        renderItem={CalendarItem}
+        renderItem={(item) => {
+          return (
+            <CalendarItem
+              item={item}
+              navigation={navigation}
+            />
+          );
+        }}
         renderEmptyDate={EmptyDateItem}
         renderKnob={Knob}
         rowHasChanged={onRowHasChanged}

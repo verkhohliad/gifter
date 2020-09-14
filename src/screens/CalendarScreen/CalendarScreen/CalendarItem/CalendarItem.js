@@ -8,9 +8,21 @@ import styles from './styles';
 // todo: move it to the Events when it'll be created
 const BIRTHDAY_TYPE = 'bdate';
 
-const CalendarItem = ({ source, type, assignedUser: { firstName, lastName, photo } = {} } = {}) => {
+const CalendarItem = ({
+  item = {},
+  navigation,
+} = {}) => {
+  const {
+    source,
+    type,
+    assignedUser: { firstName, lastName, photo } = {},
+  } = item;
+
   return (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity
+      style={styles.item}
+      onPress={() => { navigation.navigate('Event', item); }}
+    >
       <Image
         style={styles.image}
         source={{
