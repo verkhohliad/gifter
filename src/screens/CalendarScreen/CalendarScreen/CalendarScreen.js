@@ -38,7 +38,14 @@ const CalendarScreen = ({ navigation }) => {
             />
           );
         }}
-        renderEmptyDate={EmptyDateItem}
+        renderEmptyDate={(date) => {
+          return (
+            <EmptyDateItem
+              date={date}
+              navigation={navigation}
+            />
+          );
+        }}
         renderKnob={Knob}
         rowHasChanged={onRowHasChanged}
       />
