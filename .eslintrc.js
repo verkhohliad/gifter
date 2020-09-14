@@ -31,5 +31,6 @@ module.exports = {
     'import/extensions': 'off',
     'react/prop-types': 'off',
     'max-len': ['error', { 'code': 150 }],
+    'react/jsx-props-no-spreading': 'off',
   },
 };
