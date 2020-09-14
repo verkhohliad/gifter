@@ -2,7 +2,7 @@ import React, {
   useState, useMemo, useCallback, useEffect,
 } from 'react';
 
-import { Functions, Users } from 'services/firebase';
+import { Users, Events } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 
 import { Provider } from './CalendarUserDataContext';
@@ -15,8 +15,8 @@ const CalendarUserDataProvider = ({ children }) => {
 
   const update = useCallback(async () => {
     setIsLoading(true);
-    const { data: userEvents } = await Functions.fetchEvents();
     const currentUser = await Users.getCurrentUser(currentUserUid);
+    const userEvents = await Events.getEvents(currentUser);
 
     setEvents(userEvents);
     setCalendarUserData(currentUser);

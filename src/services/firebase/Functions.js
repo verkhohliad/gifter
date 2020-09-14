@@ -10,11 +10,6 @@ class Functions {
     // this.functions.useFunctionsEmulator('http://localhost:5001');
   }
 
-  // todo: make Events for getting data via firestore and remove this function
-  fetchEvents() {
-    return this.functions.httpsCallable('events-getAll')();
-  }
-
   pickVkUser(userId) {
     return this.functions.httpsCallable('vk-pickUser')({ userId });
   }
