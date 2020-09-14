@@ -6,6 +6,10 @@ class Events {
   }
 
   async getEvents(currentUser) {
+    if (!currentUser.vk) {
+      return [];
+    }
+
     const events = [];
 
     const requests = currentUser.vk.friends.map((friendId) => {

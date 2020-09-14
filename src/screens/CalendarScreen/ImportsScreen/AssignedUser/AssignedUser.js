@@ -31,8 +31,8 @@ const AssignedUser = ({
         },
         {
           text: 'Yes',
-          onPress: () => {
-            Functions.unpickVkUser();
+          onPress: async () => {
+            await Functions.unpickVkUser();
             updateCalendarUserData();
           },
         },
