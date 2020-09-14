@@ -1,17 +1,30 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import {
+  Text, TouchableOpacity, Image,
+} from 'react-native';
 
 import styles from './styles';
 
-// eslint-disable-next-line no-unused-vars
-const CalendarItem = (item, firstItemInDay) => {
-  // console.log({ item, firstItemInDay });
+// todo: move it to the Events when it'll be created
+const BIRTHDAY_TYPE = 'bdate';
+
+const CalendarItem = ({ source, type, assignedUser: { firstName, lastName, photo } = {} } = {}) => {
   return (
     <TouchableOpacity style={styles.item}>
-      <Text>
-        {item?.assignedUser.firstName}
+      <Image
+        style={styles.image}
+        source={{
+          uri: photo,
+        }}
+      />
+      <Text style={styles.title}>
+        {firstName}
         {' '}
-        {item?.assignedUser.lastName}
+        {lastName}
+      </Text>
+      <Text style={styles.details}>
+        {`${source}: `}
+        {type === BIRTHDAY_TYPE && 'Birthday'}
       </Text>
     </TouchableOpacity>
   );
