@@ -16,7 +16,6 @@ const CalendarUserDataProvider = ({ children }) => {
   const update = useCallback(async () => {
     setIsLoading(true);
     const { data: userEvents } = await Functions.fetchEvents();
-    console.log({ userEvents });
     const currentUser = await Users.getCurrentUser(currentUserUid);
 
     setEvents(userEvents);
