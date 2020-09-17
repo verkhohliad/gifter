@@ -2,6 +2,16 @@
 
 import { AccessToken, LoginManager } from 'react-native-fbsdk';
 
+// const isLogged = await FBAuth.login();
+//
+// if (!isLogged) {
+//   return null;
+// }
+//
+// const fbAccessToken = await FBAuth.loadToken();
+// const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(fbAccessToken.accessToken);
+// const response = await firebaseAuth().signInWithCredential(facebookCredential);
+
 class Auth {
   async login() {
     try {

@@ -6,7 +6,7 @@ class Events {
   }
 
   async getEvents(currentUser) {
-    if (!currentUser.vk) {
+    if (!currentUser?.vk) {
       return [];
     }
 

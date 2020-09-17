@@ -8,13 +8,11 @@ import { settingsStyles } from './styles';
 
 const SettingsScreen = () => {
   const {
-    setFbAccessToken,
     setUserData,
   } = useUserData();
 
   const logout = useCallback(async () => {
     await Auth.logout();
-    setFbAccessToken(null);
     setUserData(null);
   }, []);
 

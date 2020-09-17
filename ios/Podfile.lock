@@ -668,6 +668,10 @@ PODS:
     - React
   - RNCMaskedView (0.1.10):
     - React
+  - RNCPushNotificationIOS (1.5.0):
+    - React
+  - RNDeviceInfo (6.0.2):
+    - React
   - RNFBApp (8.3.0):
     - Firebase/CoreOnly (~> 6.28.1)
     - React
@@ -754,6 +758,8 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
+  - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
@@ -863,6 +869,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNCPushNotificationIOS:
+    :path: "../node_modules/@react-native-community/push-notification-ios"
+  RNDeviceInfo:
+    :path: "../node_modules/react-native-device-info"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -947,6 +957,8 @@ SPEC CHECKSUMS:
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
+  RNCPushNotificationIOS: 8025ff0b610d7b28d29ddc1b619cd55814362e4c
+  RNDeviceInfo: 273208fc409c58acecd7f5bd726eb5c7edd8265d
   RNFBApp: d55b3a69d199cff25ecf4f3bf41a86c47aa37d57
   RNFBAuth: 8cdec65b3c88e8f5b2aa0109d8cbfbaaa73fb379
   RNFBFirestore: 85df763f15f97c0cc8ec0a429aaa18dc8196e386
@@ -958,6 +970,6 @@ SPEC CHECKSUMS:
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 2081b9e84fc7203d3a0801acc03c6c8d0a0b4bc5
+PODFILE CHECKSUM: 238ceb176bc336b4de976459079aeb1003b924c7
 
 COCOAPODS: 1.9.3

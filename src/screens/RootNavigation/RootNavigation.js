@@ -28,12 +28,9 @@ export function navigate(name, params) {
 const RootNavigation = ({ navigationState }) => {
   const scheme = useColorScheme();
   const {
-    fbAccessToken,
     userData,
-    setFbAccessToken,
-    setUserData,
   } = useUserData();
-  const isLoggedIn = fbAccessToken && userData;
+  const isLoggedIn = Boolean(userData);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -51,10 +48,7 @@ const RootNavigation = ({ navigationState }) => {
       theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       {!isLoggedIn && (
-        <LoginScreen
-          setFbAccessToken={setFbAccessToken}
-          setUserData={setUserData}
-        />
+        <LoginScreen />
       )}
       {isLoggedIn && (
         <>
