@@ -2,32 +2,15 @@
 
 import firebaseAuth from '@react-native-firebase/auth';
 
-import { Auth as FBAuth } from 'services/facebook';
-
 class Auth {
-  async login() {
-    try {
-      const isLogged = await FBAuth.login();
+  constructor() {
+    this.auth = firebaseAuth();
+  }
 
-      if (!isLogged) {
-        return null;
-      }
+  async login(phone) {
+    const respConfirmResult = await this.auth.signInWithPhoneNumber(phone);
 
-      const fbAccessToken = await FBAuth.loadToken();
-      const facebookCredential = firebaseAuth.FacebookAuthProvider.credential(fbAccessToken.accessToken);
-      const response = await firebaseAuth().signInWithCredential(facebookCredential);
-
-      return {
-        fbAccessToken: fbAccessToken.accessToken,
-        // eslint-disable-next-line no-underscore-dangle
-        userData: response.user._user,
-      };
-    } catch (error) {
-      // todo: [logger] error
-      console.error('Login failed', error);
-
-      return null;
-    }
+    return respConfirmResult;
   }
 
   onAuthStateChanged(callback) {
@@ -38,7 +21,6 @@ class Auth {
   }
 
   async logout() {
-    FBAuth.logout();
     await firebaseAuth().signOut();
   }
 }

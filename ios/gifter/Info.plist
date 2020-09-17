@@ -36,9 +36,11 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>phone-auth</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.68732826142-ec5pmg2gfedetsv6vhgja9l710sveje7</string>
+				<string>com.googleusercontent.apps.68732826142-6lpukkbmd0lr3lbkn9ka5o2g345bon3j</string>
 			</array>
 		</dict>
 	</array>
