@@ -13,9 +13,7 @@ class Events {
     const events = [];
 
     const requests = currentUser.vk.friends.map((friendId) => {
-      return this.vkEventsRef.doc(String(friendId)).get({
-        source: 'cache',
-      });
+      return this.vkEventsRef.doc(String(friendId)).get();
     });
 
     const results = await Promise.all(requests);
