@@ -82,6 +82,7 @@ target 'gifter' do
   pod 'Firebase/CoreOnly'
   pod 'Firebase/Firestore'
   pod 'Firebase/Functions'
+  pod 'Firebase/Storage'
 
   pod 'React-cxxreact', :path => '../node_modules/react-native/ReactCommon/cxxreact'
   pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi'
