@@ -8,12 +8,12 @@ import { settingsStyles } from './styles';
 
 const SettingsScreen = () => {
   const {
-    setUserData,
+    setAuthUserData,
   } = useUserData();
 
   const logout = useCallback(async () => {
     await Auth.logout();
-    setUserData(null);
+    setAuthUserData(null);
   }, []);
 
   return (

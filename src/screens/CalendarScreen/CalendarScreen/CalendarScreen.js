@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 
-import { useCalendarUserData } from '../CalendarUserData';
+import { useUserData } from 'shared/contexts/userData';
 
 import CalendarItem from './CalendarItem';
 import EmptyDateItem from './EmptyDateItem';
@@ -17,7 +17,7 @@ const MAX_DATE = `${CURRENT_FULL_YEAR}-12-31`;
 const onRowHasChanged = (r1, r2) => { return r1 !== r2; };
 
 const CalendarScreen = ({ navigation }) => {
-  const { events: initialEvents } = useCalendarUserData();
+  const { events: initialEvents } = useUserData();
   const [events, setEvents] = useState({});
 
   useEffect(() => {

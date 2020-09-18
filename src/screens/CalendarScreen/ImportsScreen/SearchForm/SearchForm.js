@@ -4,10 +4,10 @@ import {
 } from 'react-native';
 
 import { Functions } from 'services/firebase';
+import { useUserData } from 'shared/contexts/userData';
 import logger from 'shared/logger';
 
 import styles from './styles';
-import { useCalendarUserData } from '../../CalendarUserData';
 
 const userListKeyExtractor = (item) => { return item.id; };
 
@@ -39,12 +39,12 @@ const SearchForm = ({ navigation }) => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { update: updateCalendarUserData } = useCalendarUserData();
+  const { updateUserData } = useUserData();
 
   const selectUser = useCallback(async (userId) => {
     setIsLoading(true);
     const { data } = await Functions.pickVkUser(userId);
-    await updateCalendarUserData();
+    await updateUserData();
     setIsLoading(false);
     setVkUserId('');
     setUsers([]);

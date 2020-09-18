@@ -28,9 +28,9 @@ export function navigate(name, params) {
 const RootNavigation = ({ navigationState }) => {
   const scheme = useColorScheme();
   const {
-    userData,
+    authUserData,
   } = useUserData();
-  const isLoggedIn = Boolean(userData);
+  const isLoggedIn = Boolean(authUserData);
 
   useEffect(() => {
     isMountedRef.current = true;

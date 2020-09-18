@@ -4,9 +4,8 @@ import {
 } from 'react-native';
 
 import { Functions } from 'services/firebase';
+import { useUserData } from 'shared/contexts/userData';
 import Icon from 'shared/components/Icon';
-
-import { useCalendarUserData } from '../../CalendarUserData';
 
 import styles from './styles';
 
@@ -18,7 +17,7 @@ const AssignedUser = ({
       uri: photo,
     };
   }, [photo]);
-  const { update: updateCalendarUserData } = useCalendarUserData();
+  const { updateUserData } = useUserData();
 
   const onRelease = useCallback(() => {
     Alert.alert(
@@ -33,7 +32,7 @@ const AssignedUser = ({
           text: 'Yes',
           onPress: async () => {
             await Functions.unpickVkUser();
-            updateCalendarUserData();
+            await updateUserData();
           },
         },
       ],

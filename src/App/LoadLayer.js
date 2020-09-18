@@ -10,7 +10,8 @@ const LoadLayer = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [navigationState, setNavigationState] = useState(null);
   const {
-    setUserData,
+    setAuthUserData,
+    isUserDataLoading,
   } = useUserData();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const LoadLayer = () => {
 
       Auth.onAuthStateChanged((userData) => {
         if (userData) {
-          setUserData(userData);
+          setAuthUserData(userData);
         }
 
         // todo: splash screen turn off instead of isLoaded flag
@@ -40,7 +41,8 @@ const LoadLayer = () => {
     }
   }, []);
 
-  return isLoaded && (
+  // todo: use this condition for turning off splash screen
+  return (isLoaded && !isUserDataLoading) && (
     <RootNavigation navigationState={navigationState} />
   );
 };

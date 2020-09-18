@@ -1,24 +1,23 @@
 import React from 'react';
 import {
-  View, Text, ActivityIndicator,
+  View, Text,
 } from 'react-native';
 
-import { useCalendarUserData } from '../CalendarUserData';
+import { useUserData } from 'shared/contexts/userData';
 
 import SearchForm from './SearchForm';
 import AssignedUser from './AssignedUser';
 import styles from './styles';
 
 const ImportsScreen = ({ navigation }) => {
-  const { calendarUserData, isLoading } = useCalendarUserData();
+  const { userData } = useUserData();
 
   return (
     <View style={styles.importsScreen}>
       <Text style={styles.title}>Vk Import</Text>
 
-      {isLoading && (<ActivityIndicator size="large" />)}
-      {!isLoading && calendarUserData?.vk && <AssignedUser {...calendarUserData.vk} />}
-      {!isLoading && !calendarUserData?.vk && <SearchForm navigation={navigation} />}
+      {userData?.vk && <AssignedUser {...userData.vk} />}
+      {!userData?.vk && <SearchForm navigation={navigation} />}
     </View>
   );
 };

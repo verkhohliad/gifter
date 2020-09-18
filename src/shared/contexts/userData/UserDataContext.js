@@ -1,8 +1,12 @@
 import { createContext } from 'react';
 
 export const UserDataContext = createContext({
-  userData: null,
-  setUserData: () => {},
+  authUserData: null,
+  setAuthUserData: () => {},
+  events: [],
+  userData: {},
+  updateUserData: () => {},
+  isUserDataLoading: false,
 });
 
 export const { Consumer, Provider } = UserDataContext;
