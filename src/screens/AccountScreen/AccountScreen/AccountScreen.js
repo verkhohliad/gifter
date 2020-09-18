@@ -4,9 +4,10 @@ import { Text, View } from 'react-native';
 import UserPic from 'shared/components/UserPic';
 import { useUserData } from 'shared/contexts/userData';
 
+import WishList from './WishList';
 import styles from './styles';
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   const { userData } = useUserData();
 
   const firstName = userData?.vk?.firstName ?? '';
@@ -26,6 +27,10 @@ const AccountScreen = () => {
           {lastName}
         </Text>
       </View>
+
+      <WishList
+        navigation={navigation}
+      />
     </View>
   );
 };

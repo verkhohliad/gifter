@@ -6,6 +6,7 @@ import Icon from 'shared/components/Icon';
 
 import AccountScreen from './AccountScreen';
 import SettingsScreen from './SettingsScreen';
+import CreateWithItemScreen from './CreateWishItemScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,7 @@ const AccountScreenContainer = () => {
         }}
       />
       <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="CreateWishItem" component={CreateWithItemScreen} />
     </Stack.Navigator>
   );
 };
