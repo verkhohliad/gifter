@@ -6,6 +6,8 @@ import ImagePicker from 'react-native-image-picker';
 
 import logger from 'shared/logger';
 import ProductPic from 'shared/components/ProductPic';
+import { Storage } from 'services/firebase';
+import { useUserData } from 'shared/contexts/userData';
 
 import styles from './styles';
 
@@ -14,6 +16,7 @@ const CreateWithItemScreen = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
+  const { authUserData: { uid: userUid } } = useUserData();
 
   const onImagePick = useCallback(() => {
     const options = {
@@ -42,18 +45,23 @@ const CreateWithItemScreen = () => {
     });
   }, []);
 
-  const onSave = useCallback(() => {
+  const onSave = useCallback(async () => {
     console.log({
       image,
       title,
       description,
       link,
     });
+
+    const key = await Storage.saveWishImage(userUid, image);
+
+    console.log({ key });
   }, [
     image,
     title,
     description,
     link,
+    userUid,
   ]);
 
   return (
