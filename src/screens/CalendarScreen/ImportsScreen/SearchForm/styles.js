@@ -19,8 +19,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   image: {
-    width: 50,
-    height: 50,
+    margin: 10,
   },
   label: {
     fontSize: 16,

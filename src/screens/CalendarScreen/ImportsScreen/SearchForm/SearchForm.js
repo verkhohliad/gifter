@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import {
-  ActivityIndicator, Button, FlatList, Image, Text, TextInput, TouchableOpacity, View,
+  ActivityIndicator, Button, FlatList, Text, TextInput, TouchableOpacity, View,
 } from 'react-native';
 
+import UserPic from 'shared/components/UserPic';
 import { Functions } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 import logger from 'shared/logger';
@@ -13,7 +14,7 @@ const userListKeyExtractor = (item) => { return item.id; };
 
 const renderItem = ({ item }) => {
   const {
-    firstName, lastName, photoSource, onPress,
+    firstName, lastName, photo, onPress,
   } = item;
 
   return (
@@ -21,9 +22,10 @@ const renderItem = ({ item }) => {
       style={styles.item}
       onPress={onPress}
     >
-      <Image
+      <UserPic
         style={styles.image}
-        source={photoSource}
+        source={photo}
+        variant="small"
       />
       <Text style={styles.label}>
         {firstName}
@@ -74,9 +76,7 @@ const SearchForm = ({ navigation }) => {
           id,
           firstName,
           lastName,
-          photoSource: {
-            uri: photo,
-          },
+          photo,
           onPress: selectUser.bind(null, id),
         };
       });

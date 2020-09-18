@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  eventScreen: {
+  accountScreen: {
     flex: 1,
   },
-  personal: {
+  userInfo: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -13,13 +13,6 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 24,
-  },
-  details: {
-    margin: 30,
-  },
-  detail: {
-    fontSize: 20,
-    margin: 10,
   },
 });
 

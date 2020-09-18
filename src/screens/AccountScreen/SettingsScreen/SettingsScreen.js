@@ -4,7 +4,7 @@ import { View, Button } from 'react-native';
 import { Auth } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 
-import { settingsStyles } from './styles';
+import styles from './styles';
 
 const SettingsScreen = () => {
   const {
@@ -17,7 +17,7 @@ const SettingsScreen = () => {
   }, []);
 
   return (
-    <View style={settingsStyles.container}>
+    <View style={styles.settingsScreen}>
       <Button
         title="Logout"
         onPress={logout}

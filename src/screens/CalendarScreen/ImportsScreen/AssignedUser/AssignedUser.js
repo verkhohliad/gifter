@@ -1,8 +1,9 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {
-  View, Image, Text, TouchableOpacity, Alert,
+  View, Text, TouchableOpacity, Alert,
 } from 'react-native';
 
+import UserPic from 'shared/components/UserPic';
 import { Functions } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 import Icon from 'shared/components/Icon';
@@ -12,11 +13,6 @@ import styles from './styles';
 const AssignedUser = ({
   firstName, lastName, photo, domain,
 } = {}) => {
-  const photoSource = useMemo(() => {
-    return {
-      uri: photo,
-    };
-  }, [photo]);
   const { updateUserData } = useUserData();
 
   const onRelease = useCallback(() => {
@@ -42,9 +38,9 @@ const AssignedUser = ({
 
   return (
     <View style={styles.assignedUser}>
-      <Image
-        style={styles.image}
-        source={photoSource}
+      <UserPic
+        source={photo}
+        variant="small"
       />
       <Text style={styles.name}>
         {firstName}

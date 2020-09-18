@@ -1,5 +1,7 @@
-import React, { useMemo } from 'react';
-import { View, Text, Image } from 'react-native';
+import React from 'react';
+import { View, Text } from 'react-native';
+
+import UserPic from 'shared/components/UserPic';
 
 import styles from './styles';
 
@@ -10,18 +12,13 @@ const EventScreen = ({
     } = {},
   },
 }) => {
-  const photoSource = useMemo(() => {
-    return {
-      uri: photo,
-    };
-  }, []);
-
   return (
     <View style={styles.eventScreen}>
       <View style={styles.personal}>
-        <Image
+        <UserPic
           style={styles.image}
-          source={photoSource}
+          source={photo}
+          variant="big"
         />
         <Text style={styles.name}>
           {firstName}
