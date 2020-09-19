@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 import { useWishList } from '../../WishListContext';
 
+import WishItem from './WishItem';
 import AddWishItem from './AddWishItem';
 import styles from './styles';
 
@@ -12,9 +13,28 @@ const WishList = ({ navigation }) => {
   return (
     <View style={styles.wishList}>
       <Text style={styles.title}>Wish List</Text>
-      <View style={styles.wishItems}>
-        <AddWishItem navigation={navigation} />
-      </View>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        <View style={styles.wishItems}>
+          {
+            wishList.map((wishItem) => {
+              return (
+                <WishItem
+                  key={wishItem.imageKey}
+                  style={styles.wishItem}
+                  wishItem={wishItem}
+                />
+              );
+            })
+          }
+          <AddWishItem
+            style={styles.wishItem}
+            navigation={navigation}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

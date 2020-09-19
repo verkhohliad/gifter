@@ -5,12 +5,13 @@ import Image from 'shared/components/Image';
 import blankProduct from './blankProduct.png';
 import styles from './styles';
 
-const ProductPic = ({ style = {}, source }) => {
+// variant = big, small
+const ProductPic = ({ style = {}, source, variant = 'big' }) => {
   return (
     <Image
       style={{
         ...style,
-        ...styles.productPic,
+        ...styles[variant],
       }}
       source={source}
       defaultSource={blankProduct}

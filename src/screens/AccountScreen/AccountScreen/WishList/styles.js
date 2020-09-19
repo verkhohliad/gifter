@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   wishList: {
-    height: 200,
     marginLeft: 20,
   },
   title: {
@@ -10,6 +9,13 @@ const styles = StyleSheet.create({
   },
   wishItems: {
     flex: 1,
+    flexDirection: 'row',
+  },
+  wishItem: {
+    height: 190,
+    marginTop: 20,
+    borderRadius: 10,
+    marginRight: 20,
   },
 });
 

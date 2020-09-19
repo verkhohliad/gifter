@@ -5,14 +5,17 @@ import Icon from 'shared/components/Icon';
 
 import styles from './styles';
 
-const AddWishItem = ({ navigation }) => {
+const AddWishItem = ({ navigation, style }) => {
   const onPressItem = useCallback(() => {
     navigation.navigate('CreateWishItem');
   }, []);
 
   return (
     <TouchableOpacity
-      style={styles.addWishItem}
+      style={{
+        ...styles.addWishItem,
+        ...style,
+      }}
       onPress={onPressItem}
     >
       <Text>
