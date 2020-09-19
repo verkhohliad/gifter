@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
   },
+  wishItems: {
+    flex: 1,
+  },
 });
 
 export default styles;

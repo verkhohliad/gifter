@@ -6,17 +6,20 @@ import ImagePicker from 'react-native-image-picker';
 
 import logger from 'shared/logger';
 import ProductPic from 'shared/components/ProductPic';
-import { Storage } from 'services/firebase';
+import { Storage, WishLists } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
+
+import { useWishList } from '../WishListContext';
 
 import styles from './styles';
 
-const CreateWithItemScreen = () => {
-  const [image, setImage] = useState();
+const CreateWithItemScreen = ({ navigation }) => {
+  const [imageSource, setImageSource] = useState();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [link, setLink] = useState('');
   const { authUserData: { uid: userUid } } = useUserData();
+  const { addWishItem } = useWishList();
 
   const onImagePick = useCallback(() => {
     const options = {
@@ -40,24 +43,29 @@ const CreateWithItemScreen = () => {
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
 
-        setImage(response.uri);
+        setImageSource(response.uri);
       }
     });
   }, []);
 
   const onSave = useCallback(async () => {
-    console.log({
-      image,
+    const imageKey = await Storage.saveWishImage(userUid, imageSource);
+    const imageUrl = await Storage.getImageUrl(imageKey);
+
+    const wishItem = {
+      imageKey,
+      imageUrl,
       title,
       description,
       link,
-    });
+    };
 
-    const key = await Storage.saveWishImage(userUid, image);
+    WishLists.createWishList(userUid, wishItem);
 
-    console.log({ key });
+    addWishItem(wishItem);
+    navigation.navigate('Account');
   }, [
-    image,
+    imageSource,
     title,
     description,
     link,
@@ -71,7 +79,7 @@ const CreateWithItemScreen = () => {
           onPress={onImagePick}
         >
           <ProductPic
-            source={image}
+            source={imageSource}
           />
         </TouchableOpacity>
       </View>
