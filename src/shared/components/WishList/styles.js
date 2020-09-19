@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   wishItem: {
-    height: 190,
+    height: 180,
     marginTop: 20,
     borderRadius: 10,
     marginRight: 20,

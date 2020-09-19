@@ -1,17 +1,22 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useCallback } from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 
 import ProductPic from 'shared/components/ProductPic';
 
 import styles from './styles';
 
-const WishItem = ({ style, wishItem }) => {
+const WishItem = ({ style, wishItem, navigation }) => {
+  const onPressItem = useCallback(() => {
+    navigation.navigate('WishItem', wishItem);
+  }, [wishItem]);
+
   return (
-    <View
+    <TouchableOpacity
       style={{
         ...styles.wishItem,
         ...style,
       }}
+      onPress={onPressItem}
     >
       <ProductPic
         source={wishItem.imageUrl}
@@ -20,7 +25,7 @@ const WishItem = ({ style, wishItem }) => {
       <Text style={styles.title}>
         {wishItem.title}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

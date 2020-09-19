@@ -1,15 +1,11 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
-import { useWishList } from '../../WishListContext';
-
 import WishItem from './WishItem';
 import AddWishItem from './AddWishItem';
 import styles from './styles';
 
-const WishList = ({ navigation }) => {
-  const { wishList } = useWishList();
-
+const WishList = ({ navigation, wishList = [], editable = false }) => {
   return (
     <View style={styles.wishList}>
       <Text style={styles.title}>Wish List</Text>
@@ -25,14 +21,17 @@ const WishList = ({ navigation }) => {
                   key={wishItem.imageKey}
                   style={styles.wishItem}
                   wishItem={wishItem}
+                  navigation={navigation}
                 />
               );
             })
           }
-          <AddWishItem
-            style={styles.wishItem}
-            navigation={navigation}
-          />
+          {Boolean(editable) && (
+            <AddWishItem
+              style={styles.wishItem}
+              navigation={navigation}
+            />
+          )}
         </View>
       </ScrollView>
     </View>

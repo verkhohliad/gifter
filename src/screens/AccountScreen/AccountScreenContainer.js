@@ -7,6 +7,7 @@ import Icon from 'shared/components/Icon';
 import AccountScreen from './AccountScreen';
 import SettingsScreen from './SettingsScreen';
 import CreateWithItemScreen from './CreateWishItemScreen';
+import WishItemScreen from './WishItemScreen';
 import { WishListProvider } from './WishListContext';
 
 const Stack = createStackNavigator();
@@ -38,6 +39,7 @@ const AccountScreenContainer = () => {
         />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="CreateWishItem" component={CreateWithItemScreen} />
+        <Stack.Screen name="WishItem" component={WishItemScreen} />
       </Stack.Navigator>
     </WishListProvider>
   );

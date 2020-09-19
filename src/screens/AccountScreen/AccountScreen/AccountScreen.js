@@ -3,12 +3,15 @@ import { Text, View } from 'react-native';
 
 import UserPic from 'shared/components/UserPic';
 import { useUserData } from 'shared/contexts/userData';
+import WishList from 'shared/components/WishList';
 
-import WishList from './WishList';
+import { useWishList } from '../WishListContext';
+
 import styles from './styles';
 
 const AccountScreen = ({ navigation }) => {
   const { userData } = useUserData();
+  const { wishList } = useWishList();
 
   const firstName = userData?.vk?.firstName ?? '';
   const lastName = userData?.vk?.lastName ?? '';
@@ -29,7 +32,9 @@ const AccountScreen = ({ navigation }) => {
       </View>
 
       <WishList
+        editable
         navigation={navigation}
+        wishList={wishList}
       />
     </View>
   );
