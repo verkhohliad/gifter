@@ -85,8 +85,10 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>Your location is required for searching the nearest gift shops for you</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location is required for searching the nearest gift shops for you</string>
 	<key>NSMainNibFile</key>
 	<string>LaunchScreen</string>
 	<key>UIAppFonts</key>
