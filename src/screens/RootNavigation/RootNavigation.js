@@ -5,10 +5,12 @@ import { useColorScheme } from 'react-native-appearance';
 
 import { useUserData } from 'shared/contexts/userData';
 import { saveNavigationState } from 'shared/utils/navigationState';
+import Icon from 'shared/components/Icon';
 
 import LoginScreen from '../LoginScreen';
 import CalendarScreen from '../CalendarScreen';
 import AccountScreen from '../AccountScreen';
+import MapScreen from '../MapScreen';
 
 const navigationRef = React.createRef();
 // Parent's useEffect is always called after child's useEffect
@@ -52,16 +54,41 @@ const RootNavigation = ({ navigationState }) => {
       )}
       {isLoggedIn && (
         <>
-          <Tab.Navigator>
+          <Tab.Navigator
+            screenOptions={({ route }) => {
+              return {
+                tabBarIcon: ({ color }) => {
+                  let iconName;
+
+                  if (route.name === 'Calendar') {
+                    iconName = 'calendar';
+                  } else if (route.name === 'Map') {
+                    iconName = 'pointer';
+                  } else if (route.name === 'Account') {
+                    iconName = 'user';
+                  }
+
+                  return <Icon name={iconName} color={color} />;
+                },
+              };
+            }}
+            tabBarOptions={{
+              activeTintColor: '#366d97',
+              inactiveTintColor: 'gray',
+              showLabel: false,
+            }}
+          >
             <Tab.Screen
               name="Calendar"
               component={CalendarScreen}
-              options={{ title: 'Calendar' }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={MapScreen}
             />
             <Tab.Screen
               name="Account"
               component={AccountScreen}
-              options={{ title: 'Account' }}
             />
           </Tab.Navigator>
         </>
