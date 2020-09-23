@@ -7,10 +7,11 @@ import WishList from 'shared/components/WishList';
 
 import { useWishList } from '../WishListContext';
 
+import BirthdayPicker from './BirthdayPicker';
 import styles from './styles';
 
 const AccountScreen = ({ navigation }) => {
-  const { userData } = useUserData();
+  const { userData, authUserData } = useUserData();
   const { wishList } = useWishList();
 
   const firstName = userData?.vk?.firstName ?? '';
@@ -30,6 +31,11 @@ const AccountScreen = ({ navigation }) => {
           {lastName}
         </Text>
       </View>
+
+      <BirthdayPicker
+        bdate={userData?.bdate}
+        userUid={authUserData.uid}
+      />
 
       <WishList
         editable

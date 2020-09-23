@@ -678,6 +678,8 @@ PODS:
     - React
   - RNCPushNotificationIOS (1.5.0):
     - React
+  - RNDateTimePicker (3.0.2):
+    - React
   - RNDeviceInfo (6.0.2):
     - React
   - RNFBApp (8.4.3):
@@ -773,6 +775,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
+  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
@@ -889,6 +892,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/masked-view"
   RNCPushNotificationIOS:
     :path: "../node_modules/@react-native-community/push-notification-ios"
+  RNDateTimePicker:
+    :path: "../node_modules/@react-native-community/datetimepicker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFBApp:
@@ -980,6 +985,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: db711e29e5e0500d9bd21aa0c2e397efa45302b1
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNCPushNotificationIOS: 8025ff0b610d7b28d29ddc1b619cd55814362e4c
+  RNDateTimePicker: 3a1783e63fcb6e2b162b08a4321db030d23accff
   RNDeviceInfo: 273208fc409c58acecd7f5bd726eb5c7edd8265d
   RNFBApp: a74d8259d827c8bf55100e759cffa2e50ba6fe30
   RNFBAuth: 8fd5ea881020a13deae2ca3e9810e30d15ce42ac

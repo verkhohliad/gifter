@@ -13,22 +13,22 @@ const UserDataProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const currentUserUid = authUserData?.uid;
 
-  const updateUserData = useCallback(async (userUid) => {
-    if (!userUid) {
+  const updateUserData = useCallback(async () => {
+    if (!currentUserUid) {
       return;
     }
 
     setIsUserDataLoading(true);
-    const currentUser = await Users.getCurrentUser(userUid);
+    const currentUser = await Users.getCurrentUser(currentUserUid);
     const userEvents = await Events.getEvents(currentUser);
 
     setEvents(userEvents);
     setUserData(currentUser);
     setIsUserDataLoading(false);
-  }, []);
+  }, [currentUserUid]);
 
   useEffect(() => {
-    updateUserData(currentUserUid);
+    updateUserData();
   }, [currentUserUid]);
 
   const value = useMemo(() => {

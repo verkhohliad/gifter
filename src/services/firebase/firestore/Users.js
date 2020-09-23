@@ -10,6 +10,12 @@ class Users {
 
     return userSnap.data();
   }
+
+  setCurrentUserBirthday(userUid, bdate) {
+    this.ref.doc(userUid).update({
+      bdate,
+    });
+  }
 }
 
 export default new Users();
