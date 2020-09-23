@@ -6,11 +6,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  image: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
-  },
   name: {
     fontSize: 22,
     margin: 10,

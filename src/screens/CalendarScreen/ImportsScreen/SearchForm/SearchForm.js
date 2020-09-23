@@ -1,19 +1,20 @@
 import React, { useState, useCallback } from 'react';
 import {
-  ActivityIndicator, Button, FlatList, Image, Text, TextInput, TouchableOpacity, View,
+  ActivityIndicator, Button, FlatList, Text, TextInput, TouchableOpacity, View,
 } from 'react-native';
 
+import UserPic from 'shared/components/UserPic';
 import { Functions } from 'services/firebase';
+import { useUserData } from 'shared/contexts/userData';
 import logger from 'shared/logger';
 
 import styles from './styles';
-import { useCalendarUserData } from '../../CalendarUserData';
 
 const userListKeyExtractor = (item) => { return item.id; };
 
 const renderItem = ({ item }) => {
   const {
-    firstName, lastName, photoSource, onPress,
+    firstName, lastName, photo, onPress,
   } = item;
 
   return (
@@ -21,9 +22,10 @@ const renderItem = ({ item }) => {
       style={styles.item}
       onPress={onPress}
     >
-      <Image
+      <UserPic
         style={styles.image}
-        source={photoSource}
+        source={photo}
+        variant="small"
       />
       <Text style={styles.label}>
         {firstName}
@@ -39,12 +41,12 @@ const SearchForm = ({ navigation }) => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { update: updateCalendarUserData } = useCalendarUserData();
+  const { updateUserData } = useUserData();
 
   const selectUser = useCallback(async (userId) => {
     setIsLoading(true);
     const { data } = await Functions.pickVkUser(userId);
-    await updateCalendarUserData();
+    await updateUserData();
     setIsLoading(false);
     setVkUserId('');
     setUsers([]);
@@ -74,9 +76,7 @@ const SearchForm = ({ navigation }) => {
           id,
           firstName,
           lastName,
-          photoSource: {
-            uri: photo,
-          },
+          photo,
           onPress: selectUser.bind(null, id),
         };
       });

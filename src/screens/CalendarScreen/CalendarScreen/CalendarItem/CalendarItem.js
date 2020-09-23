@@ -1,7 +1,9 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import {
-  Text, TouchableOpacity, Image,
+  Text, TouchableOpacity,
 } from 'react-native';
+
+import UserPic from 'shared/components/UserPic';
 
 import styles from './styles';
 
@@ -22,20 +24,14 @@ const CalendarItem = ({
     navigation.navigate('Event', item);
   }, [item]);
 
-  const photoSource = useMemo(() => {
-    return {
-      uri: photo,
-    };
-  }, [photo]);
-
   return (
     <TouchableOpacity
       style={styles.item}
       onPress={onPressItem}
     >
-      <Image
-        style={styles.image}
-        source={photoSource}
+      <UserPic
+        source={photo}
+        variant="small"
       />
       <Text style={styles.title}>
         {firstName}

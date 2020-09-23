@@ -12,11 +12,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  image: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
   details: {
     right: 0,
     top: 0,

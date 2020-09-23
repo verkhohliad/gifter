@@ -9,9 +9,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
     margin: 20,
   },
   name: {

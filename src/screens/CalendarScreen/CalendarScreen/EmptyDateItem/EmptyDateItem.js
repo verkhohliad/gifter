@@ -16,7 +16,7 @@ const EmptyDateItem = ({ date, navigation }) => {
       onPress={onPressItem}
     >
       <Text>
-        <Icon size={40} name="plus" />
+        <Icon name="plus" />
       </Text>
     </TouchableOpacity>
   );
