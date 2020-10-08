@@ -37,7 +37,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>phone-auth</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.68732826142-6lpukkbmd0lr3lbkn9ka5o2g345bon3j</string>
@@ -86,11 +86,13 @@
 		</dict>
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-    <string>Your location is required for searching the nearest gift shops for you</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location is required for searching the nearest gift shops for you</string>
+	<string>Your location is required for searching the nearest gift shops for you</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Your location is required for searching the nearest gift shops for you</string>
 	<key>NSMainNibFile</key>
 	<string>LaunchScreen</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your photo library is required for creating wish item with picture from your library</string>
 	<key>UIAppFonts</key>
 	<array/>
 	<key>UILaunchStoryboardName</key>
