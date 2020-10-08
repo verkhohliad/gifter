@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useColorScheme } from 'react-native-appearance';
@@ -47,7 +48,8 @@ const RootNavigation = ({ navigationState }) => {
       ref={navigationRef}
       initialState={navigationState}
       onStateChange={saveNavigationState}
-      theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
+      // use DarkTheme here to enable dark mode
+      theme={scheme === 'dark' ? DefaultTheme : DefaultTheme}
     >
       {!isLoggedIn && (
         <LoginScreen />
