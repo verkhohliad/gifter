@@ -31,6 +31,7 @@
     "react-native-device-info": "6.0.2",
     "react-native-fbsdk": "2.0.0",
     "react-native-gesture-handler": "1.6.1",
+    "react-native-get-random-values": "^1.5.0",
     "react-native-image-picker": "2.3.3",
     "react-native-maps": "0.27.1",
     "react-native-modal": "11.5.6",
