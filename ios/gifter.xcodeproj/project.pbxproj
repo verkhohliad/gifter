@@ -11,7 +11,6 @@
 		0556ACFEBEAD584C0A42D110 /* libPods-gifter-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5F00341C4EA8ACCA398877 /* libPods-gifter-tvOSTests.a */; };
 		0D911B56BD64DB0AA846C4D7 /* libPods-gifter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F36C90DCB6300B0EB08ABE /* libPods-gifter.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -22,7 +21,8 @@
 		AC38656437A51F81F70A9555 /* libPods-gifter-gifterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DEEDE478D599E49351B5AB17 /* libPods-gifter-gifterTests.a */; };
 		E39D540824913EF900071D5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E39D540724913EF900071D5A /* GoogleService-Info.plist */; };
 		E3CC568524DAF901000FD662 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3CC568424DAF901000FD662 /* GoogleService-Info.plist */; };
-		E3D775BB251E3B9700BC99F8 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = E3D775BA251E3B9700BC99F8 /* main.jsbundle */; };
+		E3D77633252F808A00BC99F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3D77632252F808900BC99F8 /* LaunchScreen.storyboard */; };
+		E3D77760252F8D3900BC99F8 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = E3D7775F252F8D3900BC99F8 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -64,7 +64,6 @@
 		13B07F961A680F5B00A75B9A /* Gifter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gifter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = gifter/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = gifter/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = gifter/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = gifter/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = gifter/main.m; sourceTree = "<group>"; };
@@ -98,7 +97,8 @@
 		E369AEC2251BDCCA00EC14C4 /* Gifter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Gifter.entitlements; path = gifter/Gifter.entitlements; sourceTree = "<group>"; };
 		E39D540724913EF900071D5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E3CC568424DAF901000FD662 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E3D775BA251E3B9700BC99F8 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		E3D77632252F808900BC99F8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = gifter/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E3D7775F252F8D3900BC99F8 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FCFAD2FAD4727BA8E788A725 /* Pods-gifter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gifter.debug.xcconfig"; path = "Target Support Files/Pods-gifter/Pods-gifter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,9 +167,9 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				E3D7775F252F8D3900BC99F8 /* main.jsbundle */,
+				E3D77632252F808900BC99F8 /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				E3D775BA251E3B9700BC99F8 /* main.jsbundle */,
 			);
 			name = gifter;
 			sourceTree = "<group>";
@@ -418,8 +418,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E3CC568524DAF901000FD662 /* GoogleService-Info.plist in Resources */,
-				E3D775BB251E3B9700BC99F8 /* main.jsbundle in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				E3D77760252F8D3900BC99F8 /* main.jsbundle in Resources */,
+				E3D77633252F808A00BC99F8 /* LaunchScreen.storyboard in Resources */,
 				E39D540824913EF900071D5A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,18 +691,6 @@
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = gifter;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
