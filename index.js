@@ -1,5 +1,6 @@
 import { AppRegistry } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
+import 'react-native-get-random-values';
 
 import { configure as configurePushNotifications } from './src/services/pushNotifications';
 import App from './src/App';
