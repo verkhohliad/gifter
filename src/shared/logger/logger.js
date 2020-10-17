@@ -1,11 +1,17 @@
-// todo: use logger and crashlitics here
+import { Crashlytics } from 'services/firebase';
 
 const logger = {
   log(...args) {
     console.log(...args);
   },
-  error(...args) {
-    console.warn(...args);
+  error(error) {
+    console.error(error);
+
+    if (error.message) {
+      Crashlytics.recordError(error);
+    }
+
+    Crashlytics.log(error?.message ?? error);
   },
   info(...args) {
     console.info(...args);
