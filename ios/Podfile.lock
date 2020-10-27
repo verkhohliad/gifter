@@ -246,6 +246,8 @@ PODS:
     - FBSDKCoreKit (~> 7.1.1)
   - Firebase (6.30.0):
     - Firebase/Core (= 6.30.0)
+  - Firebase/Analytics (6.30.0):
+    - Firebase/Core
   - Firebase/Auth (6.30.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 6.8.0)
@@ -254,6 +256,9 @@ PODS:
     - FirebaseAnalytics (= 6.7.2)
   - Firebase/CoreOnly (6.30.0):
     - FirebaseCore (= 6.10.0)
+  - Firebase/Crashlytics (6.30.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 4.4.0)
   - Firebase/Firestore (6.30.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 1.16.4)
@@ -286,6 +291,12 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/Logger (~> 6.7)
     - nanopb (~> 1.30905.0)
+  - FirebaseCrashlytics (4.4.0):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleDataTransport (~> 7.2)
+    - nanopb (~> 1.30905.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseFirestore (1.16.4):
     - abseil/algorithm (= 0.20200225.0)
     - abseil/base (= 0.20200225.0)
@@ -381,7 +392,6 @@ PODS:
     - GoogleMaps
   - Google-Maps-iOS-Utils/QuadTree (2.1.0):
     - GoogleMaps
-  - GoogleAnalytics (3.17.0)
   - GoogleAppMeasurement (6.7.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -715,24 +725,32 @@ PODS:
     - React-Core
   - RNDeviceInfo (6.0.2):
     - React
-  - RNFBApp (8.4.3):
+  - RNFBAnalytics (7.6.8):
+    - Firebase/Analytics (~> 6.30.0)
+    - React-Core
+    - RNFBApp
+  - RNFBApp (8.4.5):
     - Firebase/CoreOnly (~> 6.30.0)
     - React-Core
-  - RNFBAuth (9.2.3):
+  - RNFBAuth (9.3.0):
     - Firebase/Auth (~> 6.30.0)
     - React-Core
     - RNFBApp
-  - RNFBFirestore (7.8.2):
+  - RNFBCrashlytics (8.4.9):
+    - Firebase/Crashlytics (~> 6.30.0)
+    - React-Core
+    - RNFBApp
+  - RNFBFirestore (7.8.6):
     - Firebase/Firestore (~> 6.30.0)
     - React-Core
     - RNFBApp
-  - RNFBFunctions (7.4.4):
+  - RNFBFunctions (7.4.8):
     - Firebase/Functions (~> 6.30.0)
     - React-Core
     - RNFBApp
-  - RNFBStorage (7.4.3):
+  - RNFBStorage (7.4.9):
     - Firebase/Storage (~> 6.30.0)
-    - React
+    - React-Core
     - RNFBApp
   - RNGestureHandler (1.6.1):
     - React
@@ -751,8 +769,10 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Firebase
+  - Firebase/Analytics
   - Firebase/Auth
   - Firebase/CoreOnly
+  - Firebase/Crashlytics
   - Firebase/Firestore
   - Firebase/Functions
   - Firebase/Storage
@@ -778,7 +798,6 @@ DEPENDENCIES:
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Google-Maps-iOS-Utils
-  - GoogleAnalytics
   - GoogleMaps
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -815,8 +834,10 @@ DEPENDENCIES:
   - "RNCPushNotificationIOS (from `../node_modules/@react-native-community/push-notification-ios`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
+  - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - "RNFBFunctions (from `../node_modules/@react-native-firebase/functions`)"
   - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
@@ -841,6 +862,7 @@ SPEC REPOS:
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseFirestore
     - FirebaseFunctions
     - FirebaseInstallations
@@ -853,7 +875,6 @@ SPEC REPOS:
     - Flipper-RSocket
     - FlipperKit
     - Google-Maps-iOS-Utils
-    - GoogleAnalytics
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleMaps
@@ -944,10 +965,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNFBAnalytics:
+    :path: "../node_modules/@react-native-firebase/analytics"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
     :path: "../node_modules/@react-native-firebase/auth"
+  RNFBCrashlytics:
+    :path: "../node_modules/@react-native-firebase/crashlytics"
   RNFBFirestore:
     :path: "../node_modules/@react-native-firebase/firestore"
   RNFBFunctions:
@@ -982,6 +1007,7 @@ SPEC CHECKSUMS:
   FirebaseAuth: 300433de340c1b058dbb8aec224a3f1bcfda5184
   FirebaseCore: 9a41e2de78fef10f63cee30ab10e2945266bc1fc
   FirebaseCoreDiagnostics: 7535fe695737f8c5b350584292a70b7f8ff0357b
+  FirebaseCrashlytics: 859918905322e8816d2b5ab7fe54bf5a0c84d21c
   FirebaseFirestore: ff82cd15f8ed3b417c307eb729e3e2e68aad0bdd
   FirebaseFunctions: e0694e614a5e3300120a10d925e2cd3be60a9c81
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
@@ -996,7 +1022,6 @@ SPEC CHECKSUMS:
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   GoogleAppMeasurement: 3def7652b1f5b5a576178dc332e2a36a260fbef6
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleMaps: 32ca02de09de357a10ac773f2c70f1986751392d
@@ -1041,11 +1066,13 @@ SPEC CHECKSUMS:
   RNCPushNotificationIOS: 8025ff0b610d7b28d29ddc1b619cd55814362e4c
   RNDateTimePicker: e9fcd5ecdc0c5b018871e0d178d6040dca11973c
   RNDeviceInfo: 273208fc409c58acecd7f5bd726eb5c7edd8265d
-  RNFBApp: a74d8259d827c8bf55100e759cffa2e50ba6fe30
-  RNFBAuth: ccae9605207f4a3bc6e03cd0adb5433872ef4418
-  RNFBFirestore: f2d9ff58a4a2d91f9084c1ac0662054a10766a66
-  RNFBFunctions: c6f99e1947be3adb41af48d156ee49035a951014
-  RNFBStorage: 5a2b16803e784436fb1261806edee98a0397714b
+  RNFBAnalytics: d37df3b18614723840ecedee18964480205e4e34
+  RNFBApp: 570b136767f588b7eef0ab918284e9fe364d0c3e
+  RNFBAuth: 7fb279b3d3dfbe1499b92c842722d9343fb522c1
+  RNFBCrashlytics: 7b60463c742f830255fa76f13a837f95c6581700
+  RNFBFirestore: af1be97b4fa9cede20b34f724c8e3260c6e2540d
+  RNFBFunctions: db82a1c996b8a8a63bf0c0027c579d4abd200982
+  RNFBStorage: f7d269f1ca0035995d573dfd0b892c0ecba8fbfb
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
   RNScreens: 62211832af51e0aebcf6e8c36bcf7dd65592f244
@@ -1053,6 +1080,6 @@ SPEC CHECKSUMS:
   Yoga: 7d13633d129fd179e01b8953d38d47be90db185a
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: e90ca90657d7a58564ff73012c6ec3d9ff909b3a
+PODFILE CHECKSUM: f9cee3249a3cfbf3b6d0f08a5d641555a54a3923
 
 COCOAPODS: 1.9.3

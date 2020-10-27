@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1130"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;&#10;echo &quot;??????????&quot;&#10;&#10;echo $PODS_ROOT&#10;echo $WORKSPACE&#10;echo $DWARF_DSYM_FILE_NAME&#10;&#10;&quot;$PODS_ROOT/FirebaseCrashlytics/upload-symbols -gsp $WORKSPACE/GoogleService-Info.plist&quot; -p ios $DWARF_DSYM_FILE_NAME&quot;&#10;&#10;echo &quot;!!!!!!!!!&quot;&#10;&#10;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -50,6 +59,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;# Type a script or drag a script file from your workspace to insert its path.&#10;&#10;echo &quot;??????????&quot;&#10;&#10;echo $PODS_ROOT&#10;echo $WORKSPACE&#10;echo $DWARF_DSYM_FILE_NAME&#10;&#10;&quot;$PODS_ROOT/FirebaseCrashlytics/upload-symbols -gsp $WORKSPACE/GoogleService-Info.plist&quot; -p ios $DWARF_DSYM_FILE_NAME&quot;&#10;&#10;echo &quot;!!!!!!!!!&quot;&#10;&#10;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -60,6 +78,16 @@
             ReferencedContainer = "container:gifter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "FIRAnalyticsDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "FIRDebugEnabled"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -84,5 +112,24 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;&#10;&#10;echo $PODS_ROOT&#10;echo $WORKSPACE&#10;echo $DWARF_DSYM_FILE_NAME&#10;&#10;&quot;$PODS_ROOT/FirebaseCrashlytics/upload-symbols -gsp $WORKSPACE/GoogleService-Info.plist&quot; -p ios $DWARF_DSYM_FILE_NAME&quot;&#10;&#10;&#10;&#10;&#10;"
+               shellToInvoke = "/bin/sh">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "Gifter.app"
+                     BlueprintName = "gifter"
+                     ReferencedContainer = "container:gifter.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>

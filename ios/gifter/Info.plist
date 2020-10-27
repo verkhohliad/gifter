@@ -46,10 +46,16 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>FIRDebugEnabled</key>
+	<true/>
+	<key>FIREBASE_ANALYTICS_COLLECTION_ENABLED</key>
+	<true/>
 	<key>FacebookAppID</key>
 	<string>1303801806491965</string>
 	<key>FacebookDisplayName</key>
 	<string>Gifter</string>
+	<key>FirebaseCrashlyticsCollectionEnabled</key>
+	<true/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>

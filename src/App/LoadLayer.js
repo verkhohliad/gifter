@@ -3,7 +3,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 import { restoreNavigationState } from 'shared/utils/navigationState';
 import RootNavigation from 'screens/RootNavigation';
-import { Auth } from 'services/firebase';
+import { Auth, Crashlytics } from 'services/firebase';
 import { useUserData } from 'shared/contexts/userData';
 
 const LoadLayer = () => {
@@ -23,9 +23,14 @@ const LoadLayer = () => {
         setNavigationState(initialNavigationState);
       }
 
-      Auth.onAuthStateChanged((userData) => {
-        if (userData) {
-          setAuthUserData(userData);
+      Auth.onAuthStateChanged((authUserData) => {
+        if (authUserData) {
+          setAuthUserData(authUserData);
+
+          Crashlytics.setUser({
+            uid: authUserData.uid,
+            phone: authUserData.phoneNumber,
+          });
         }
 
         // todo: splash screen turn off instead of isLoaded flag
